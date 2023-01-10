@@ -1,0 +1,24 @@
+.header {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    min-height: 104px;
+    align-items: center;
+}
+.nav__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap:20px;
+    justify-content: center ;
+}
+.nav__link {
+    color: #737373;
+    font-weight: 600;
+    line-height: 1.7;
+    font-size: 16px;
+    &:hover{
+        color: #1e77c0;
+    }
+}

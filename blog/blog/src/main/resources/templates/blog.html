@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title> Блог сайта</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{css/index.css}">
+</head>
+<body>
+    
+    <div th:fragment="header" class="header">
+
+        <header class="container">
+        <ul class="nav__list">
+            <li class="nav__item"><a href="/blog" class="nav__link"> Мой блог</a></li>
+            <li class="nav__item"><a href="/blog/add" class="nav__link">Добавить статью</a></li>
+         </ul>
+        </header>
+    
+    </div>
+
+    <main class="page">
+        <div class="page__main-block main-block">
+            <div class="main-block__container container">
+                <div class="main-block__body">
+                    <h1 class="main-block__title">Блог про IT</h1>
+                    <div class="main-block__text">На этом сайте можно прочитать много интересных статей, а также добавить свои</div>
+                    <div class="main-block__buttons">
+                        <a href="/blog/add" class="main-block__button main-block__button_border">Добавить статью</a>
+                    </div>
+                </div>
+            </div>
+            <div class="main-block__image _ibj">
+                <img th:src="@{img/background.jpg}" alt="cover">
+            </div>
+        </div>
+        <section class="page__practice practice">
+            <div class="practice__container container">
+                <div class="practice__header header-block">
+                    <h2 class="header-block__title">Practice Advice</h2>
+                    <div class="header-block__subtitle">Problems trying to resolve the conflict between <br>
+                        the two major realms of Classical physics: Newtonian mechanics 
+                    </div>
+                </div>
+                <div class="practice__body">
+                    <div th:each="el : ${posts}" class="practice__column">
+                        <article class="practice__item">
+                            <div class="practice__content">
+                                <a th:href="'/blog/' + ${el.id}" class="practice__link">
+                                    <h4 th:text="${el.title}" class="practice__title"></h4>
+                                </a>
+                                <p th:text="${el.anons}" class="practice__text"></p>
+                            </div>                               
+                             <a class="practice__img _ibj">
+                                <img th:src="'img/'+${el.file_name}" alt="" class="img">
+                            </a>
+                        </article>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+    <div th:insert="blocks/footer :: footer"></div>
+</body>
+</html>
+
